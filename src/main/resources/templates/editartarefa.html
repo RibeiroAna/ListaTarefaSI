@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="utf-8"></meta>
+   <title> Lista de Afazeres: Nova Lista</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="style/style.css"/>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand glyphicon glyphicon-ok" href="index">Listas de afazeres</a>
+    		</div>
+  		</div>
+  	</nav>
+    <div class="container">
+      <h3> Editando tarefa com o id <b href="#" th:text="${tarefa.id}"></b>...</h3>
+      <form th:action="${'/editartarefa?id=' + tarefa.id}" th:object="${tarefa}" method="POST">
+        <div class="form-group">
+            <label for="descricao">Editar descrição da tarefa: </label>
+            <input type="text" id="descricao" th:value="${tarefa.descricao}" th:field="*{descricao}"/>
+        </div>
+        <div class="form-group">
+            <label for="categoria">Editar categoria: </label>
+            <input type="text" id="categoria" th:value="${tarefa.categoria}" th:field="*{categoria}"/>
+        </div>
+        <div class="checkbox">
+    		<label><input type="checkbox" th:field="*{feito}">Marcar como feita</input></label>
+  		</div>
+    	<button type="submit" class="btn btn-default col-xs-6">Modificar!</button>
+      </form>
+    </div>
+</body>
+</html>

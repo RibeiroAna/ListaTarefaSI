@@ -1,0 +1,38 @@
+.form-tarefa {
+	background-color:  #b7b9dd;
+}
+
+.feito {
+	text-decoration: line-through;
+	background-color: #d4d8dd;
+}
+
+.linkDisabled {
+   color: #717477;
+   pointer-events: none;
+   cursor: default;
+}
+
+.excluido {
+	display: none;
+}
+
+.divAdicionar {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.alta {
+	color: #e60000;
+	font-weight: bold;
+}
+
+.media {
+	color: #ff7f40;
+	font-weight: bold;
+}
+
+.baixa {
+	color: #3399ff;
+	font-weight: bold;
+}

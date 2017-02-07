@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="utf-8"></meta>
+   <title> Lista de Afazeres: Nova Lista</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="style/style.css"/>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand glyphicon glyphicon-ok" href="index">Listas de afazeres</a>
+    		</div>
+  		</div>
+  	</nav>
+  		
+     <form action="#" th:action="@{/addLista}" th:object="${listaDeTarefa}" method="post">
+       	<label class="col-xs-3" for="novaLista">Nova Lista:</label>
+        <input type="text"  class="col-xs-5" id="novaLista" th:field="*{nome}"/>
+    	<label class="col-xs-1"/>
+        <button type="submit" class="col-xs-2 btn btn-default">Criar</button>
+     </form>
+     
+     
+    <table class="table" id="listas">
+    	<thead>
+      		<tr>
+        		<th class="col-xs-10">Nome</th>
+        		<th class="col-xs-2"></th>
+     	 	</tr>
+   		 </thead>
+   		 <tbody>
+   		 		<tr th:each="lista : ${listas}">
+   		 			<td th:text="${lista.nome}"></td>
+   		 			<td><a th:href="${'/excluirlista?id=' + lista.id}" class="glyphicon glyphicon-trash">Excluir</a></td> 			
+   		 		</tr>   		 
+   		 </tbody>
+	</table>
+</body>
+</html>
