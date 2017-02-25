@@ -1,6 +1,14 @@
 package br.edu.ufcg.controller;
 
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import br.edu.ufcg.domain.ListaDeTarefaEntity;
 import br.edu.ufcg.domain.TarefaEntity;
@@ -36,6 +48,40 @@ public class MainController {
     return model;
   }
 
+  @GetMapping("/getPDF")
+  public String createPDF(Model model, HttpServletRequest request, HttpServletResponse response)
+      throws Exception {
+    String dataDirectory = request.getServletContext().getRealPath("/files/");
+    Path file = (Path) Paths.get(dataDirectory, "texto.pdf");
+
+    // step 1
+    Document document = new Document();
+    // step 2
+    PdfWriter.getInstance(document, new FileOutputStream(file.toString()));
+    // step 3
+    document.open();
+    // step 4
+    Random random = new Random();
+    document.add(new Paragraph("Aleatoriohue" + random.nextInt(90)));
+    // step 5
+    document.close();
+
+
+    if (Files.exists(file)) {
+      response.setContentType("application/pdf");
+      response.addHeader("Content-Disposition", "attachment; filename= texto.pdf");
+
+      Files.copy(file, response.getOutputStream());
+      response.getOutputStream().flush();
+    }
+
+
+    model = baseModel(model);
+    return "index";
+  }
+
+  
+  
   @PostMapping("/addLista")
   public String addLista(@ModelAttribute ListaDeTarefa listaDeTarefa, Model model) {
     listaDeTarefaRep.save(new ListaDeTarefaEntity(listaDeTarefa.getNome()));
