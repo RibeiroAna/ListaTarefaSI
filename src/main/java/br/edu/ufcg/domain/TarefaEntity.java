@@ -11,6 +11,13 @@ import javax.persistence.Table;
 @Table(name = "tb_tarefa")
 public class TarefaEntity {
   
+  @Override
+  public String toString() {
+    return "[id=" + id + ", descricao=" + descricao + ", idLista=" + idLista
+        + ", prioridade=" + prioridade + ", feito=" + feito + ", idSuper=" + idSuper
+        + ", categoria=" + categoria + "]";
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;

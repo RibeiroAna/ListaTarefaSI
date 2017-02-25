@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,16 +53,24 @@ public class MainController {
     String dataDirectory = request.getServletContext().getRealPath("/files/");
     Path file = (Path) Paths.get(dataDirectory, "texto.pdf");
 
-    // step 1
     Document document = new Document();
-    // step 2
     PdfWriter.getInstance(document, new FileOutputStream(file.toString()));
-    // step 3
     document.open();
-    // step 4
-    Random random = new Random();
-    document.add(new Paragraph("Aleatoriohue" + random.nextInt(90)));
-    // step 5
+   
+    List<ListaDeTarefaEntity> listasDeTarefa = (List<ListaDeTarefaEntity>) listaDeTarefaRep.findAll();
+    document.add(new Paragraph("Listas criadas:"));
+    for (int i = 0; i < listasDeTarefa.size(); i++) {
+      document.add(new Paragraph(listasDeTarefa.get(i).toString()));
+    }
+    
+    List<TarefaEntity> tarefas = (List<TarefaEntity>) tarefaRep.findAll();
+    document.add(new Paragraph("Tarefas criadas:"));
+    for (int i = 0; i < tarefas.size(); i++) {
+      document.add(new Paragraph(tarefas.get(i).toString()));
+    }
+    
+    
+    
     document.close();
 
 
