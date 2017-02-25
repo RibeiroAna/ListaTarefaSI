@@ -1,4 +1,4 @@
-package ufcg.edu.br;
+package br.edu.ufcg;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

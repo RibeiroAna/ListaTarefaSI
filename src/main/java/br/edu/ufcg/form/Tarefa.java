@@ -1,4 +1,4 @@
-package ufcg.edu.br.form;
+package br.edu.ufcg.form;
 
 public class Tarefa {
 

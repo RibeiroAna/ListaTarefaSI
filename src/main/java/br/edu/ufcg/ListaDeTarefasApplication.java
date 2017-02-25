@@ -1,4 +1,4 @@
-package ufcg.edu.br;
+package br.edu.ufcg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

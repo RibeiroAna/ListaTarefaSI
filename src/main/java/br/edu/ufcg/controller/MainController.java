@@ -1,4 +1,4 @@
-package ufcg.edu.br.controller;
+package br.edu.ufcg.controller;
 
 import java.util.List;
 
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ufcg.edu.br.domain.ListaDeTarefaEntity;
-import ufcg.edu.br.domain.TarefaEntity;
-import ufcg.edu.br.form.ListaDeTarefa;
-import ufcg.edu.br.form.Tarefa;
-import ufcg.edu.br.repository.ListaDeTarefaRepository;
-import ufcg.edu.br.repository.TarefaRepository;
+import br.edu.ufcg.domain.ListaDeTarefaEntity;
+import br.edu.ufcg.domain.TarefaEntity;
+import br.edu.ufcg.form.ListaDeTarefa;
+import br.edu.ufcg.form.Tarefa;
+import br.edu.ufcg.repository.ListaDeTarefaRepository;
+import br.edu.ufcg.repository.TarefaRepository;
 
 @Controller
 public class MainController {

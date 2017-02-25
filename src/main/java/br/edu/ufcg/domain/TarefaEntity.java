@@ -1,4 +1,4 @@
-package ufcg.edu.br.domain;
+package br.edu.ufcg.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

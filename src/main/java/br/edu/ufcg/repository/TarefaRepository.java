@@ -1,10 +1,10 @@
-package ufcg.edu.br.repository;
+package br.edu.ufcg.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import ufcg.edu.br.domain.TarefaEntity;
+import br.edu.ufcg.domain.TarefaEntity;
 
 public interface TarefaRepository extends CrudRepository<TarefaEntity, Long> {
   List<TarefaEntity> findByDescricao(String descricao);
